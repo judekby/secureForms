@@ -145,9 +145,7 @@ $rs_sql->execute();
 <tbody>
     <?php while ($donnees = $rs_sql->fetch()) : ?>
         <tr>
-            <!-- Affichage de l'ID de la tâche -->
             <td><?php echo $donnees['nom']; ?></td>
-            <!-- Affichage de la description de la tâche -->
             <td><?php echo $donnees['prenom']; ?></td>
             <td><?php echo $donnees['age']; ?></td>
             <td><?php echo $donnees['ville']; ?></td>
