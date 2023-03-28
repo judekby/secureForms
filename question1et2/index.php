@@ -93,13 +93,13 @@ if (isset($_POST['ville'])) {
         $erreur = "Vous devez saisir l'ensemble des informations";
         echo $erreur;
     } else{
-        $ville = $_POST['ville'];
-        $numero = $_POST['numero'];
+        $ville = trim($_POST['ville']);
+        $numero = trim($_POST['numero']);
 
-        // Utilisation des requêtes préparées pour éviter les injections SQL
+       
         $stmt = $db->prepare("INSERT INTO personne (ville, numero) VALUES (:ville, :numero)");
         $stmt->bindParam(':ville', $ville);
-        $stmt->bindParam(':numero', $numero);
+        $stmt->bindParam(':numero', $numero, PDO::PARAM_INT);
 
         try {
             $stmt->execute();
