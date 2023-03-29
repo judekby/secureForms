@@ -1,18 +1,23 @@
 <?php 
-require ('./view/authentificationOtp.php');
+session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once './Model/phpMailer.config.php';
-require '../PHPMailer/src/Exception.php';
-require '../PHPMailer/src/PHPMailer.php';
-require '../PHPMailer/src/SMTP.php';
-require_once('./database/connectDb.php');
-require ('gabarit.php');
+include ('./Views/authentification.php');
 
-session_start();
+require './PHPMailer/src/Exception.php';
+require './PHPMailer/src/PHPMailer.php';
+require './PHPMailer/src/SMTP.php';
+require ('./Models/phpMailer.config.php');
 
+
+$email = $_SESSION['email'];
+$username = $_SESSION['username'];
+
+
+$expiration = time() + (5*60);
+$code = rand(100000,999999);
 
 $mail = new PHPMailer(true);
 try{
@@ -20,8 +25,8 @@ try{
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = $stmp_username;     
-    $mail->Password   = $stmp_password;
+    $mail->Username   = $smtp_username;     
+    $mail->Password   = $smtp_password;
     $mail->SMTPSecure = 'ssl';                                  
     $mail->Port       =  465;  
     $mail->setFrom('ne-pas-repondre@gmail.com', 'admin');
@@ -48,5 +53,12 @@ try{
     } 
     catch (Exception $e) {
     echo 'Email coulds not be sent. Error: ', $mail->ErrorInfo;
-            }   
+    } 
+    
+    try{
+        require ('./Models/authentification.php');
+        $insert_code = insert_otp($code);
+    }catch(Exception $e){
+        print_r($e);
+    }
    

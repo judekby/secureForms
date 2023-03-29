@@ -9,20 +9,21 @@ require ('gabarit.php');
             <div class="card">
                 <div class="card-header bg-primary text-white">Connexion</div>
                 <div class="card-body">
-                    <form>
+                    <form  method="POST">
                         <div class="form-group">
                             <label for="username">Nom d'utilisateur</label>
-                            <input type="text" class="form-control" id="username" placeholder="Entrez votre nom d'utilisateur">
+                            <input type="text" class="form-control" id="username" placeholder="Entrez votre nom d'utilisateur" name="username">
                         </div>
                         <div class="form-group">
                             <label for="email"> Email </label>
-                            <input type="text" class ="form-control" id="email" placeholder="Entrez votre email">
+                            <input type="text" class ="form-control" id="email" placeholder="Entrez votre email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" name="password">
                         </div>
-                        <button type="submit" class="btn btn-primary"><a href="index.php?controller=authentification.php"></a>Se connecter</button>
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                        
                     </form>
                 </div>
             </div>

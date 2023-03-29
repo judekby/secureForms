@@ -1,10 +1,10 @@
 <?php   
     
     if (!isset($_GET['controller'])) 
-        header ("Location: index.php?controller=connexion.php");
-    elseif (!file_exists("./controllers/{$_GET['controller']}.php")) {
+        header ("Location: index.php?controller=connexion");
+    elseif (!file_exists("./Controllers/{$_GET['controller']}.php")) {
         $ERROR=100;
-        require "./view/error.php";
+        require "./views/error.php";
     }
-    else require "./Controller/{$_GET['controller']}.php";
+    else require "./Controllers/{$_GET['controller']}.php";
 ?>
