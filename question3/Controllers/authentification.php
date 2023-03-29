@@ -16,9 +16,9 @@ $email = $_SESSION['email'];
 $username = $_SESSION['username'];
 
 
-$expiration = time() + (5*60);
-$code = rand(100000,999999);
-
+$activation_code = rand(100000,999999);
+$_SESSION['expiration_code'] = $activation_code;
+$_SESSION['expiration'] = $expiration;
 $mail = new PHPMailer(true);
 try{
     $mail->SMTPDebug = 0;
@@ -44,7 +44,7 @@ try{
     <body>
         <h1>Hi, '.$username.'</h1>
         <h2>Please use the following code to confirm your identity:</h2>
-        <p>'.$code.'</p>
+        <p>'.$activation_code.'</p>
     </body>
     </html>';
         
@@ -54,11 +54,20 @@ try{
     catch (Exception $e) {
     echo 'Email coulds not be sent. Error: ', $mail->ErrorInfo;
     } 
-    
+
     try{
         require ('./Models/authentification.php');
-        $insert_code = insert_otp($code);
-    }catch(Exception $e){
+        // $insert_code = insert_otp($activation_code);
+        if(FiveMinuteCheck());
+
+    }catch(PDOException $e)
+    {
         print_r($e);
     }
+       
+   
+
+
+
+    ?>
    

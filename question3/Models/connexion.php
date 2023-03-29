@@ -4,10 +4,10 @@ require_once('connectDb.php');
 function insert($username, $email, $password){
     global $PDO;
     $encrypted_password = password_hash($password, PASSWORD_BCRYPT);
-    $sql=$PDO->prepare('INSERT INTO utilisateur(username, email, password) VALUES (:username, :email, :password)');
+    $sql=$PDO->prepare('INSERT INTO utilisateurs (username, email, password_hash) VALUES (:username, :email, :password_hash)');
     $sql->bindValue(':username', $username);
     $sql->bindValue(':email', $email);
-    $sql->bindValue(':password', $encrypted_password);
+    $sql->bindValue(':password_hash', $encrypted_password);
 
     try{
         $sql->execute();
