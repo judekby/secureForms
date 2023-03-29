@@ -8,4 +8,10 @@ CREATE TABLE utilisateurs (
   activation_code CHAR(32) NOT NULL
 );
 
+CREATE TABLE OneTimePassword (
+    utilisateur_id INTEGER REFERENCES utilisateurs(id),
+    code INT NOT NULL,
+    creation_time TIMESTAMP NOT NULL
+);
+
 
