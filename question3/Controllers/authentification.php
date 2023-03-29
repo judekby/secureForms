@@ -59,6 +59,7 @@ try{
         require ('./Models/authentification.php');
         // $insert_code = insert_otp($activation_code);
         if(FiveMinuteCheck());
+        //TODO
 
     }catch(PDOException $e)
     {
