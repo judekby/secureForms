@@ -1,7 +1,7 @@
 <?php
-
-require_once "./database/connectDb.php";
 require 'gabarit.php';
+require('./model/connexion.php');
+
 
 define('USERNAME_FIELD', 'username');
 define('PASSWORD_FIELD', 'password');
@@ -12,8 +12,8 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST[USERNAME_FIELD], $_POST[PASSWORD_FIELD], $_POST[EMAIL_FIELD])) {
         $username = htmlspecialcharstrim($_POST[USERNAME_FIELD]);
-        $password = htmlspecialchars(trim($_POST[PASSWORD_FIELD]));
         $email = htmlspecialchars(trim($_POST[EMAIL_FIELD]));
+        $password = htmlspecialchars(trim($_POST[PASSWORD_FIELD]));
 
         $_SESSION['username'] = $username;
 
@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: index.php?erreur=Veuillez entrer une adresse email");
             exit;
         }
+        $insert = insert($username, $email, $password);
 
 
     }

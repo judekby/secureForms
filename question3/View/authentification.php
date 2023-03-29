@@ -1,7 +1,8 @@
 
 <?php
-require ('./gabarit.php')   
+require ('gabarit.php')  ; 
 ?>
+
 <form method="POST" class="mt-3">
     <div class="form-group">
         <label for="verification-code">Verification Code:</label>
@@ -9,3 +10,4 @@ require ('./gabarit.php')
     </div>
     <button type="submit" class="btn btn-primary">Confirm</button>
 </form>
+

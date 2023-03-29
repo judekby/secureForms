@@ -1,16 +1,21 @@
 <?php
-$expiration = time() + (5*60);
-$username = $_POST['username'];
-$email = $_POST['email'];
-$code = rand(100000,999999);
-$rq = $db->prepare("INSERT INTO utilisateur (code) values (:code)");
-$rq->bindParam(':code', $code);
+require('connectDb.php');
+global $PDO;
 
-try{
-    $rq->execute();
-    
-}catch(PDOException $e){ 
-    echo "Erreur";
+function insert($username, $email, $password){
+    $sql=$PDO->prepare("Insert into utilisateur(username, email, password) values :username, :email, :password");
+    $sql->bindParam(':username', $username);
+    $sql->bindParam(':email', $email);
+    $sql->bindParam(':password', $password);
+
+    try{
+        $sql->execute();
+    }catch(PDOException $e){
+        return "Erreur lors de l'insertion des données";
+
+    }   
+
 }
+
 
 ?>
