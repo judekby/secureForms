@@ -1,5 +1,5 @@
 - Crepin Corentin
 - Malebe Mayel
-- Kabeya Jude @judekby
+- Kabeya Jude 
 
 ## Sécurité des architectures internet
