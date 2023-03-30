@@ -1,7 +1,7 @@
 <?php
 // TODO: séparer ce fichier en plusieurs fichiers, 
 //avec un fichier config pour la bdd, il y a la rép  aux deux prèmieres questions, le code de la question 1 peut etre amélioré
-//séparer le html du php
+//séparer le html du php et pouvoir démontrer une injection sql sur le pdf
 
 $dsn = 'pgsql:host=localhost;dbname=secu_web';
 $user = 'judekabeya';
