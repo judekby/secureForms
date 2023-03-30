@@ -1,5 +1,8 @@
 <?php
-// Connexion à la base de données
+// TODO: séparer ce fichier en plusieurs fichiers, 
+//avec un fichier config pour la bdd, il y a la rép  aux deux prèmieres questions, le code de la question 1 peut etre amélioré
+//séparer le html du php
+
 $dsn = 'pgsql:host=localhost;dbname=secu_web';
 $user = 'judekabeya';
 $password = 'jude93zoo';
