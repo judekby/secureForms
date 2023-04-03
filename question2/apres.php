@@ -14,8 +14,7 @@
        
     </form>
 </head>
-<body>
-    
+<body>  
 </body>
 </html>
 
@@ -26,8 +25,9 @@ if (isset($_POST['ville'])) {
         $erreur = "Vous devez saisir l'ensemble des informations";
         echo $erreur;
     } else{
+        //utilisation de la méthode htmlspecialchar et tril
         $ville = htmlspecialchars(trim($_POST['ville']));
-        $numero = trim($_POST['numero']);
+        $numero = htmlspecialchars(trim($_POST['numero']));
 
        
         $stmt = $db->prepare("INSERT INTO personne (ville, numero) VALUES (:ville, :numero)");
