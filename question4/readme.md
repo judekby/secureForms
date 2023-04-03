@@ -1,0 +1,5 @@
+contrôles front-end : Les contrôles front-end sont utilisés pour valider les données saisies par l'utilisateur avant de les soumettre au serveur. On peut ajouter des contrôles tels que la validation de format d'e-mail, la vérification de la longueur du mot de passe, etc.
+
+contrôles middle-end : Les contrôles middle-end sont utilisés pour valider les données du formulaire côté serveur avant de les stocker dans la base de données. On peut ajouter des contrôles tels que la vérification de l'unicité de l'adresse e-mail, la vérification de la longueur du nom, etc. en utilisant un langage de programmation tel que PHP ou Python.
+
+Stocker les données dans la base de données : Une fois que toutes les validations ont été effectuées avec succès, on peut stocker les données du formulaire dans une base de données. Il faut crypter les mots de passe avant de les stocker pour des raisons de sécurité.
