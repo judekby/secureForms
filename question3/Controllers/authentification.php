@@ -17,8 +17,8 @@ $username = $_SESSION['username'];
 
 
 $activation_code = rand(100000,999999);
-$_SESSION['expiration_code'] = $activation_code;
-$_SESSION['expiration'] = $expiration;
+$_SESSION['otp_code'] = $activation_code;
+// $_SESSION['expiration'] = $expiration;
 $mail = new PHPMailer(true);
 try{
     $mail->SMTPDebug = 0;
@@ -57,13 +57,24 @@ try{
 
     try{
         require ('./Models/authentification.php');
-        // $insert_code = insert_otp($activation_code);
-        if(FiveMinuteCheck());
+        $insert_code = insert_otp($activation_code);
+        // if(FiveMinuteCheck());
         #TODOOOO
-
     }catch(PDOException $e)
     {
         print_r($e);
+    }
+    try{
+        require ('./Models/authentification.php');
+        if(FiveMinuteCheck()){
+            echo $_SESSION['code'];
+            echo '--------------';
+            echo $_SESSION['otp'];
+
+        }
+    }catch(Error $e){
+        echo $e;
+
     }
        
    

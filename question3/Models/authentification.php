@@ -16,6 +16,11 @@ try{
     }
 }
 
+function compare($activation_code, $database_code){
+    global $PDO;
+
+}
+
 
 function FiveMinuteCheck(){
     global $PDO;
@@ -34,7 +39,7 @@ function FiveMinuteCheck(){
     $utilisateur_id = $sql->fetchColumn();
 
     // insertion du mot de passe temporaire dans la bdd
-    $query = $PDO->prepare("INSERT INTO OneTimePassword (utilisateur_id, code, creation_time) VALUES (:utilisateur, :code, :date_crea)");
+    $query = $PDO->prepare("INSERT INTO onetimepassword (utilisateur_id, code, creation_time) VALUES (:utilisateur, :code, :date_crea)");
     $query->bindParam(':utilisateur', $utilisateur_id);
     $query->bindParam(':code', $oneTimePassword);
     $query->bindParam(':date_crea', $creationTime);
@@ -48,6 +53,7 @@ function FiveMinuteCheck(){
     // Vérifier si le mot de passe est toujours valide
     $expiration = $creationTime + (5 * 60);
     $now = time();
+
 
     if($now < $expiration) {
         return true;
