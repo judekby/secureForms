@@ -1,16 +1,24 @@
 <?php
-require ('./Views/authentification.php');
+require './Views/authentification.php';
+require './Models/mail.php';
 session_start();
-if($__SERVER['REQUEST_METHODE']==='POST'){
-    if(isset($_POST['verification_code'])){
-        $code = $_POST['verification_code'];
-        $_SESSION['code'] = $code;
-        if(empty($code)){
-            header("Location : index.php?erreur=Veuillez entrez un code de verification");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['verification-code'])) {
+        $code = $_POST['verification-code'];
+        $otp_code = $_SESSION['otp'];
+        echo"ot_cod".$otp_code ;
+        echo'---------';
+        echo"code".$code;
+
+
+
+        if (empty($code)) {
+            header("Location: index.php?erreur=Veuillez entrer un code de verification");
             exit;
         }
-    }
-    
-}
 
+        // The rest of your code goes here
+    }
+}
 ?>

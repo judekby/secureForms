@@ -4,8 +4,10 @@ session_start();
 
 function insert_otp($activation_code){
     global $PDO;
-    $query = $PDO->prepare("INSERT INTO utilisateurs (activation_code) values (:code)");
+    $user = $_SESSION['username'];
+    $query = $PDO->prepare("UPDATE utilisateurs SET activation_code = :code WHERE username = :user");
     $query->bindParam(':code', $activation_code);
+    $query->bindParam(':user', $user);
 
 try{
     $query->execute();
@@ -22,14 +24,11 @@ function compare($activation_code, $database_code){
 }
 
 
-function FiveMinuteCheck(){
+function is_valid(){
     global $PDO;
 
-    $oneTimePassword = rand(100000, 999999);
-    $_SESSION["otp"] = $oneTimePassword;
+    $oneTimePassword = $_SESSION["otp"] ;
     $user = $_SESSION["username"];
-
-
     $creationTime = date('Y-m-d H:i:s', time());
 
     // Récupérer l'ID de l'utilisateur à partir de la base de données
@@ -53,7 +52,6 @@ function FiveMinuteCheck(){
     // Vérifier si le mot de passe est toujours valide
     $expiration = $creationTime + (5 * 60);
     $now = time();
-
 
     if($now < $expiration) {
         return true;

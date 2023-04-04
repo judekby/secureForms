@@ -2,20 +2,19 @@
 include('./Views/connexion.php');
 
 session_start();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     
     if (isset($_POST['username'], $_POST['email'], $_POST['password'])) {
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
         $password =  htmlspecialchars($_POST['password']);
-
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $email;
-        print_r($_SESSION);
-
+        // print_r('session'.$_SESSION);
 
         if (empty($username)) {
+            echo 'erreur';
             header("Location: index.php?erreur=Veuillez entrer un nom d'utilisateur");
             exit;
         } elseif (empty($password)) {
@@ -28,20 +27,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
         try {
-            require( 'Models/connexion.php' );
-            $insert = insert($username, $email, $password);
-            header('Location: index.php?controller=authentification');
+            require('Models/connexion.php');
+            insert($username, $email, $password);
+            echo "oui";
+            header('Location: index.php?controller=auth');
             exit;
         } catch (Exception $e) {
+            echo"non";
             print_r($e);
         }
-    
 
-    }else{
-        die("Le formulaire doit etre rempli");
+
+        require 'Models/mail.php';
+
+    } else {
+        die("Le formulaire doit être rempli");
     }
 }
-
 
 
 ?>

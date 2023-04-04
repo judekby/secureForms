@@ -1,7 +1,7 @@
 
 <?php
 require ('gabarit.php');
- session_start();
+session_start();
 
 ?>
 
