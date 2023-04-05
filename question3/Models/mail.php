@@ -13,7 +13,6 @@ require ('./Models/phpMailer.config.php');
 $email = $_SESSION['email'];
 $username = $_SESSION['username'];
 
-
 $activation_code = rand(100000,999999);
 $_SESSION['otp'] = $activation_code;
 // $_SESSION['expiration'] = $expiration;

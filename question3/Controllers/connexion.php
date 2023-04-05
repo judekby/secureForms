@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if (isset($_POST['username'], $_POST['email'], $_POST['password'])) {
         $username = htmlspecialchars($_POST['username']);
-        $email = htmlspecialchars($_POST['email']);
+        $email = filter_var(htmlspecialchars($_POST['email'], FILTER_SANITIZE_EMAIL));
         $password =  htmlspecialchars($_POST['password']);
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $email;
@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             require('Models/connexion.php');
             insert($username, $email, $password);
-            echo "oui";
             header('Location: index.php?controller=auth');
             exit;
         } catch (Exception $e) {
@@ -38,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
 
-        require 'Models/mail.php';
 
     } else {
         die("Le formulaire doit être rempli");

@@ -7,18 +7,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['verification-code'])) {
         $code = $_POST['verification-code'];
         $otp_code = $_SESSION['otp'];
-        echo"ot_cod".$otp_code ;
-        echo'---------';
-        echo"code".$code;
-
-
-
-        if (empty($code)) {
+        if (empty($code)){
             header("Location: index.php?erreur=Veuillez entrer un code de verification");
             exit;
         }
+        echo'---------\n';
+        require_once('./Models/authentification.php');
+        try{
+            if(is_auth($code)){
+                header('Location: index.php?home');
+            };
+        }catch(Exception $e){
+            echo 'erreur dans la fonction';
 
-        // The rest of your code goes here
+        }
+
     }
 }
 ?>
