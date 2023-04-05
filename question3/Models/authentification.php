@@ -2,51 +2,36 @@
 require_once('connectDb.php');
 session_start();
 
+//insere le code otp dans la base de données
 function insert_otp($activation_code){
     global $PDO;
     $user = $_SESSION['username'];
     $query = $PDO->prepare("UPDATE utilisateurs SET activation_code = :code WHERE username = :user");
     $query->bindParam(':code', $activation_code);
     $query->bindParam(':user', $user);
-
-try{
-    $query->execute();
-    
-}catch(PDOException $e){ 
-    print_r($e);
-    
+    try {
+        $query->execute();
+    } catch(PDOException $e) { 
+        print_r($e);
     }
 }
-
+//vérifie si l'utilisateur a bien saisi le bon code de verification
 function is_auth($code){
     global $PDO;
     $user = $_SESSION['username'];
-    $query = $PDO->prepare('select * from utilisateurs where username like :name and activation_code = :code');
-    $query->bindParam(':name', $user);
-    $query->bindParam(':code', $code);
-    try{
-        $rows = $query->execute();
-    }catch(PDOException $e){
-        print_r($e);
-    }
-    if(strlen($rows) > 1){
-        return true;
-    }else{
-        return false;
+    $check = $PDO->prepare('select * from utilisateurs where username like :name and activation_code = :code');
+    $check->bindParam(':name', $user);
+    $check->bindParam(':code', $code);
+    $check->execute();
+    $row = $check->fetch(PDO::FETCH_ASSOC);
+    if($row >=1) { 
+        header('Location: index.php?controller=home');
+    } else {
+        echo "mauvais code";
     }
 }
-//     if (is_valid()){
-//         $sql = $PDO->prepare('select * from utilisateurs u  inner join onetimepassword o  on u.activation_code=o.code where u.username like :name');
-//         $sql->bindParam(':name', $user);
-//         $rows = $query->execute();
-//         if($rows){
-//             return true;
-//         }else{
-//             return false;
-//         }
-//     }
-
-// }
+?>
+<!-- 
 
 function is_valid(){
     global $PDO;
@@ -67,7 +52,6 @@ function is_valid(){
     $query->bindParam(':code', $oneTimePassword);
     $query->bindParam(':date_crea', $creationTime);
 
-
     try {
         $query->execute();
     } catch(PDOException $e) { 
@@ -87,4 +71,4 @@ function is_valid(){
 
 
 
-?>
+?> -->

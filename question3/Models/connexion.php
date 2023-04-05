@@ -1,6 +1,6 @@
 <?php
 require_once('connectDb.php');
-
+//insert les données de l'utilisateur dans la base de données
 function insert($username, $email, $password){
     global $PDO;
     $encrypted_password = password_hash($password, PASSWORD_BCRYPT);

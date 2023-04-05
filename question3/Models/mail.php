@@ -15,7 +15,6 @@ $username = $_SESSION['username'];
 
 $activation_code = rand(100000,999999);
 $_SESSION['otp'] = $activation_code;
-// $_SESSION['expiration'] = $expiration;
 $mail = new PHPMailer(true);
 try{
     $mail->SMTPDebug = 0;

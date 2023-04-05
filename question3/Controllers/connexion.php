@@ -36,8 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             print_r($e);
         }
 
-
-
     } else {
         die("Le formulaire doit être rempli");
     }
