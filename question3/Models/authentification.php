@@ -25,9 +25,9 @@ function is_auth($code){
     $check->execute();
     $row = $check->fetch(PDO::FETCH_ASSOC);
     if($row >=1) { 
-        header('Location: index.php?controller=home');
+        return true;
     } else {
-        echo "mauvais code";
+        return false;
     }
 }
 ?>

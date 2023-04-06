@@ -4,7 +4,6 @@ require ('gabarit.php');
 session_start();
 
 ?>
-
 <form method="POST" class="mt-3">
     <h2> we send you an email on <?php echo $_SESSION['email'];
 ; ?> </h2>
