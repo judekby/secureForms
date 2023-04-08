@@ -28,10 +28,6 @@ require('gabarit.php');
                                 <label for="password">Mot de passe</label>
                                 <input type="password" class="form-control" id="newpassword" name="newpassword" required>
                             </div>
-                            <div class="form-group">
-                                <label for="confirm_password">Confirmer le mot de passe</label>
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                            </div>
                             <button type="submit" class="btn btn-primary btn-block">Enregistrer les modifications</button>
                         </form>
                     </div>
