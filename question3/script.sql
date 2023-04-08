@@ -1,4 +1,4 @@
-CREATE DATABASE facebook;
+CREATE DATABASE iut;
 
 CREATE TABLE utilisateurs (
   id SERIAL PRIMARY KEY,

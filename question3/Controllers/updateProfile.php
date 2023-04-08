@@ -7,10 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = htmlspecialchars($_POST['newusername']);
         $email = filter_var(htmlspecialchars($_POST['newemail'], FILTER_SANITIZE_EMAIL));
         $password =  htmlspecialchars($_POST['newpassword']);
-        // $_SESSION['username'] = $username;
 
         if (empty($username)) {
-            echo 'erreur';
             header("Location: index.php?erreur=Veuillez entrer un nom d'utilisateur");
             exit;
         } elseif (empty($password)) {
@@ -24,13 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         try {
             require('Models/updateProfile.php');
-            echo'apres require';
-            echo update_profile($username, $email, $password);
-            echo 'apres fonction';
-            // header('Location: index.php?controller=home');
+            update_profile($username, $email, $password);
+            $_SESSION['username'] = $username;
+            header('Location: index.php?controller=home');
             exit;
         } catch (Exception $e) {
-            echo"non";
             print_r($e);
         }
 

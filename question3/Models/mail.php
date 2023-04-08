@@ -12,7 +12,6 @@ require ('./Models/phpMailer.config.php');
 
 $email = $_SESSION['email'];
 $username = $_SESSION['username'];
-
 $activation_code = rand(100000,999999);
 $_SESSION['otp'] = $activation_code;
 $mail = new PHPMailer(true);
@@ -58,22 +57,7 @@ try{
     {
         print_r($e);
     }
-    // try{
-    //     require ('./Models/authentification.php');
-    //     if(is_valid()){
-    //         echo $_SESSION['code'];
-    //         echo '--------------';
-    //         echo $_SESSION['otp'];
-
-    //     }else{
-    //         echo "no valid";
-    //     }
-    // }catch(Error $e){
-    //     echo $e;
-
-    // }
-       
-   
+    
 
 
 
