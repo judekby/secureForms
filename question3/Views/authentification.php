@@ -9,7 +9,7 @@ session_start();
 ; ?> </h2>
     <div class="form-group">
         <label for="verification-code">Verification Code:</label>
-        <input type="text" class="form-control" id="verification-code" name="verification-code" required>
+        <input type="text" class="form-control" id="verification-code" name="verification-code" >
     </div>
     <button type="submit" class="btn btn-primary">Confirm</button>
 </form>

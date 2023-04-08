@@ -1,4 +1,4 @@
 <?php
-sessioon_start();
+session_start();
 require ('./Views/home.php');
 ?>

@@ -1,4 +1,5 @@
 <?php
+require('gabarit.php');
 	// Initialiser la session
 	session_start();
 	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
@@ -8,30 +9,25 @@
 	}
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Index</title>
-	<link rel="stylesheet" href="style.css" />
-</head>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.php?controller=home">Accueil</a>
+        </nav>
+    </header>
+	<a href="index.php?controller=deconnexion" class="btn btn-danger btn-block mb-3">Déconnexion</a>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-center">Bienvenue <?php echo $_SESSION['username']; ?>!</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">Vous êtes maintenant connecté.</p>
+                        <a href="index.php?controller=updateProfile" class="btn btn-primary btn-block">Modifier le profil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<header>
-	<div class="in">
-		<div class="in">
-			<div class="menu">
-				<a >Accueil</a>
-			</div>
-		</div>
-	</div>
-</header>
-
-<body>
-	<div class="text">
-		<h1>Bienvenue <?php echo $_SESSION['username']; ?>!</h1>
-		<p>Vous êtes maintenant connecté.</p>
-	</div>
-</body>
-</html>

@@ -1,27 +1,28 @@
 <?php
 session_start();
 require './Views/authentification.php';
-require './Models/mail.php';
+// require './Models/mail.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['verification-code'])){
         $code = $_POST['verification-code'];
-        if (empty($code)){
+        if (empty($_POST['verification-code'])){
             $error = "Veuillez entrer un code de verification";
-        } else {
-            try {
-                require './Models/authentification.php';
-                if (is_auth($code)) {
-                    header('Location: index.php?controller=home');
-                    exit();
-                } else {
-                    // echo'non';
-                    $error = "Mauvais code de verification";
-                }
-            } catch (Exception $e) {
-                $error = "Erreur dans la fonction : " . $e->getMessage();
-            }
+            echo $error;
+         } 
+        try {
+            require './Models/authentification.php';
+            echo'yes';
+            if (is_auth($code)) {
+                header('Location: index.php?controller=home');}
+            else{
+                echo'<div class="alert alert-danger mt-3" role="alert">
+                        Mots de passe incorrect
+                    </div>     ';       }
+        }catch(Exception $e){
+        print_r($e);
         }
+  
     }
 }
 ?>

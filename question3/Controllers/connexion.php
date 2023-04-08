@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require('Models/connexion.php');
             insert($username, $email, $password);
             header('Location: index.php?controller=authentification');
+            require './Models/mail.php';
+
             exit;
         } catch (Exception $e) {
             echo"non";
