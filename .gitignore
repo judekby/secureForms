@@ -1,9 +1,9 @@
 /node_modules
 
-*.package-lock.json
+.package-lock.json
 
-*.package.json
+.package.json
 
-*.DS_Store
+.DS_Store
 
 

@@ -12,7 +12,7 @@
         <header class="bg-primary">
             <div class="row">
                 <img src="images/iut.png" width="100", height="50" style="margin-left: 1em; margin-bottom: 0.3em; margin-top: 0.5em">
-                <h1 class="text-justify" style="color: white; margin-left: 0.25em; margin-bottom: 0.3em; margin-top: 0.3em"><a style="color: inherit; text-decoration: inherit;" href="#">sécu web</a></h1>
+                <h1 class="text-justify" style="color: white; margin-left: 0.25em; margin-bottom: 0.3em; margin-top: 0.3em"><a style="color: inherit; text-decoration: inherit;" href="#">FORMS</a></h1>
             </div>
         </header>
 
