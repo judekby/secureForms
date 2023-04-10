@@ -24,7 +24,7 @@ try{
     $mail->Password   = $smtp_password;
     $mail->SMTPSecure = 'ssl';                                  
     $mail->Port       =  465;  
-    $mail->setFrom('ne-pas-repondre@gmail.com', 'admin');
+    $mail->setFrom('ne-pas-repondre@gmail.com', 'ne-pas-repondre@gmail.com');
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject    = 'Verification code';
@@ -58,8 +58,6 @@ try{
         print_r($e);
     }
     
-
-
 
     ?>
    

@@ -30,8 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (Exception $e) {
             print_r($e);
         }
-
-    } else {
+    }else {
         die("Le formulaire doit être rempli");
     }
 }

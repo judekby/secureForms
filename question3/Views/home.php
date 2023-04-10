@@ -14,8 +14,9 @@ require('gabarit.php');
             <a class="navbar-brand" href="index.php?controller=home">Accueil</a>
         </nav>
     </header>
-	
-	<a href="index.php?controller=deconnexion" class="btn btn-danger btn-block mb-3">Déconnexion</a>
+	<div class="deco">
+    <a href="index.php?controller=deconnexion" class="btn btn-danger btn-right mb-3">Déconnexion</a>
+</div>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
