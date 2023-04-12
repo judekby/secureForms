@@ -39,7 +39,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $encrypted_email = openssl_encrypt($email, $cipher_algo, $key, OPENSSL_RAW_DATA, $iv);
     $encrypted_password = openssl_encrypt($password, $cipher_algo, $key, OPENSSL_RAW_DATA, $iv);
 
-    // Stocker les données chiffrées dans la base de données
+    // ------------------ INSERTION DES DONNÉES CHIFFRÉES DANS LA BASE DE DONNÉES ------------------ //
+
+    // Paramètres de connexion à la base de données
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "question6";
+
+    // Créer une connexion
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Vérifier la connexion
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Préparer la requête SQL
+    $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+
+    // Préparer la requête
+    $stmt = $conn->prepare($sql);
+
+    // Lier les paramètres
+    $stmt->bind_param("sss", $encrypted_name, $encrypted_email, $encrypted_password);
+
+    // Exécuter la requête
+    $stmt->execute();
+
+    // Fermer la connexion
+    $conn->close();
+
+    // ------------------------------------------------------------------------------------------ //
 
     // Déchiffrer les données
     $decrypted_name = openssl_decrypt($encrypted_name, $cipher_algo, $key, OPENSSL_RAW_DATA, $iv);
