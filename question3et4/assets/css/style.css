@@ -1,0 +1,12 @@
+.deco {
+    text-align: right;
+  }
+
+  curl -X POST "https://accounts.spotify.com/api/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "grant_type=client_credentials&client_id=6bfbd88ef73b4a00b28842729fce3502&client_secret=a92fd9e91c304c31b829beb16ae10620"
+
+
+     curl "https://api.spotify.com/v1/artists/1Xyo4u8uXC1ZmMpatF05PJ" \
+     -H "Authorization: Bearer  BQBRlyPBYwpFvgOsXufd2l-1F0ky3jKxpkCIRJs0eMJ85JG1amt1975IBHPzjBxHdJ0ks14fxpvaWP-DwQ-CerksdVumBfwrECN_earAlWWhnPFhG3lD"
+
